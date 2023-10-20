@@ -66,6 +66,10 @@
             font-size: 1rem;
             margin-bottom: 0.25rem;
         }
+
+        .menu-ingredient {
+            font-style: italic;
+        }
     </style>
 </head>
 
@@ -104,12 +108,13 @@
                 {% for category in categories %}
                     <div class="col-md-4 mb-4">
                         <div class="card">
-                            <img src="{% static 'assets/img/bg.jpg' %}" class="card-img-top" alt="{{ dish.name }}">
+                            <img src="{% static 'assets/img/bg.jpg' %}" class="card-img-top" alt="{{ category.name }}">
                             <div class="card-body">
                                 <h5 class="category-name">{{ category.name }}</h5>
                                 <ul class="menu-list">
                                     {% for dish in category.dishes.all %}
-                                        <li class="menu-item">{{ dish.name }} - {{ dish.price }} руб.</li>
+                                        <li class="menu-item">{{ dish.name }} - {{ dish.price }} uan.</li>
+                                        <li class="menu-ingredient"><em>{{ dish.ingredients }}</em></li>
                                     {% endfor %}
                                 </ul>
                             </div>
@@ -120,4 +125,7 @@
         </div>
     </section>
 
-    <script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}
+    <script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
+</body>
+
+</html>
