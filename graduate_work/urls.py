@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from site_cafe import views
+from accounts.views import Register, Login
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,5 +28,7 @@ urlpatterns = [
     path('booking/', views.booking, name='booking'),
     path('registration', views.registration, name='registration'),
     path('menu/', views.menu, name='menu'),
+    path('register/', Register.as_view(), name='register'),
+    path('login/', Login.as_view(), name='login')
 
 ]
