@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import Category, Dish
 
+
 @admin.register(Category)
 class AdminCategory(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}

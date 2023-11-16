@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from .models import Category, Dish, Reservation
+from .models import Category, Dish
+
 def main_page(request):
     category = Category.objects.filter(is_visible=True)
     return render(request, 'index.html', context={'category': category})
