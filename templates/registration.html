@@ -1,80 +1,3 @@
-{% load static %}
-
-<!DOCTYPE html>
-<html data-bs-theme="light" lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Menu - Brand</title>
-    <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&amp;display=swap">
-    <style>
-        body {
-            background: linear-gradient(rgba(47, 23, 15, 0.65), rgba(47, 23, 15, 0.65)), url('{% static 'assets/img/bg.jpg' %}');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-position: center center;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 50vh;
-        }
-
-        .navbar-top {
-            background-color: #343a40;
-            width: 100%;
-            position: fixed;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .navbar-dark .navbar-toggler-icon {
-            background-color: #fff;
-        }
-
-        .navbar-nav .nav-link {
-            color: #fff;
-        }
-
-        .navbar-nav .nav-link:hover {
-            color: #ccc;
-        }
-
-        .registration-form {
-            background: rgb(231, 154, 46);
-            padding: 40px;
-            border-radius: 20px;
-            margin-top: 700px;
-        }
-
-        .registration-form label,
-        .registration-form input,
-        .registration-form textarea {
-            display: block;
-            margin-bottom: 10px;
-        }
-
-        .registration-form input[type="submit"] {
-            background-color: rgb(176, 116, 29);
-            border: none;
-            color: white;
-            padding: 10px 20px;
-            font-size: 16px;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-
-        .registration-form input[type="submit"]:hover {
-            background-color: rgb(180, 113, 30);
-        }
-    </style>
-</head>
-
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark navbar-top">
         <div class="container">
@@ -103,9 +26,25 @@
         </div>
     </nav>
 
-    {% include 'adduser.html'%}
+{% block content %}
+    <form action="{% url 'register' %}" method="post" role="form" class="registration-form">
+        {% csrf_token %}
 
-    <script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
-</body>
+        <label for="name">Имя:</label>
+        <input type="text" id="name" name="name" required><br><br>
 
-</html>
+        <label for="email">Электронная почта:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="phone">Телефон:</label>
+        <input type="tel" id="phone" name="phone" required><br><br>
+
+        <label for="password1">Пароль:</label>
+        <input type="password" id="password1" name="password1" required><br><br>
+
+        <label for="password2">Подтверждение пароля:</label>
+        <input type="password" id="password2" name="password2" required><br><br>
+
+        <button type="submit">Зарегистрироваться</button>
+    </form>
+{% endblock %}

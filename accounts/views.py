@@ -12,4 +12,4 @@ class RegisterUser(CreateView):
 
 class Login(LoginView):
     ...
-#
+
