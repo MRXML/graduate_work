@@ -18,7 +18,6 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'store' %}">Store</a>
-                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'menu' %}">Menu</a>
                     </li>
@@ -26,11 +25,27 @@
             </div>
         </div>
     </nav>
+{% block content %}
+    <form action="{% url 'register' %}" method="post" role="form" class="registration-form">
+        {% csrf_token %}
 
-    {% block content %}
-        <div class="buttons-container">
-            <a href="{% url 'register' %}" class="registration-button">Зарегистрироваться</a>
-            <a href="{% url 'login' %}" class="login-button">Войти</a>
-        </div>
-    {% endblock %}
-</body>
+        <label for="{{ form.username.id_for_label }}">Name:</label>
+        {{ form.username }}
+        {{ form.username.errors }}
+
+        <label for="{{ form.email.id_for_label }}">Email:</label>
+        {{ form.email }}
+        {{ form.email.errors }}
+
+        <label for="{{ form.password1.id_for_label }}">Password:</label>
+        {{ form.password1 }}
+        {{ form.password1.errors }}
+
+        <label for="{{ form.password2.id_for_label }}">Confirm Password:</label>
+        {{ form.password2 }}
+        {{ form.password2.errors }}
+
+        <button type="submit">Register</button>
+    </form>
+{% endblock %}
+

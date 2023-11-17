@@ -3,6 +3,17 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.views import LoginView
 
+class User_log(AuthenticationForm):
+    username = forms.CharField(label='Username', widget=forms.TextInput(attrs={'class': 'form-control',
+                                                                               'id': 'Username',
+                                                                               'placeholder': 'Your Name',
+                                                                               'data-rule': 'minlen:4',
+                                                                               'data-msg': 'Please enter your User name'}))
+    password = forms.CharField(label='password', widget=forms.PasswordInput(attrs={'class': 'form-control',
+                                                                                    'id': 'password',
+                                                                                    'placeholder': 'Input password',
+                                                                                    'data-rule': 'minlen:4',
+                                                                                    'data-msg': 'Please enter at least 4 chars'}))
 class User_reg(UserCreationForm):
     username = forms.CharField(label='Username', widget=forms.TextInput(attrs={'class': 'form-control',
                                                                        'id': 'Username',
