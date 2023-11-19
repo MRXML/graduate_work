@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path
 from site_cafe import views
 from accounts.views import RegisterUser, Login, logout_user
+from site_cafe.views import Book
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,9 +27,10 @@ urlpatterns = [
     path('products/', views.products, name='products'),
     path('store/', views.store, name='store'),
     path('booking/', views.booking, name='booking'),
+    path('register/', RegisterUser.as_view(), name='register'),
     path('registration/', views.registration, name='registration'),
     path('menu/', views.menu, name='menu'),
-    path('register/', RegisterUser.as_view(), name='register'),
+    path('book', Book.as_view(), name='book'),
     path('login/', Login.as_view(), name='login'),
     path('logout/', logout_user, name='logout')
 ]

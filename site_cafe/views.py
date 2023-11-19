@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from .models import Category, Dish
+from django.urls import reverse_lazy
+from django.views.generic import CreateView
 
 def main_page(request):
     category = Category.objects.filter(is_visible=True)
@@ -15,8 +17,23 @@ def products(request):
 def store(request):
     return render(request, 'store.html')
 
+
+
 def booking(request):
-    return render(request, 'booking.html')
+    form = ReservationForm()
+    return render(request, 'booking.html', {'form': form})
+
+from .forms import ReservationForm
+from .models import Reservation
+class Book(CreateView):
+    model = Reservation
+    form_class = ReservationForm
+    template_name = 'booking.html'
+    success_url = reverse_lazy('main_page')
+
+    def form_valid(self, form):
+        form.instance.processing = True
+        return super().form_valid(form)
 
 def registration(request):
     return render(request, 'registration.html')

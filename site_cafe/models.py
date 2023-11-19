@@ -21,9 +21,15 @@ class Dish(models.Model):
     category = models.ForeignKey(Category, on_delete=models.PROTECT, related_name='dishes')
     is_visible = models.BooleanField(default=True)
 class Reservation(models.Model):
-    user_name = models.CharField(max_length=100)
+    user_name = models.CharField(max_length=50)
     user_phone = models.CharField(max_length=15)
-    table_number = models.PositiveIntegerField()
-    reservation_datetime = models.DateTimeField()
-    guest_count = models.PositiveIntegerField()
+    user_datetime = models.DateTimeField()
+    user_count = models.PositiveIntegerField()
     special_requests = models.TextField(blank=True)
+
+    reservation_datetime = models.DateTimeField(auto_now_add=True)
+    processing = models.BooleanField(default=True)
+    class Meta:
+        ordering = ('-reservation_datetime',)
+
+

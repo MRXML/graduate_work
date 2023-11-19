@@ -1,64 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
+<form method="post" action="{% url 'book' %}">
+  {% csrf_token %}
+  {{ form.non_field_errors }}
 
+  <div class="form-group">
+    {{ form.user_name.label_tag}}
+    {{ form.user_name }}
+  </div>
 
+  <div class="form-group">
+    {{ form.user_phone.label_tag }}
+    {{ form.user_phone }}
+  </div>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book a Table</title>
-    <style>
-        body {
-            background-image: url('/static/assets/img/reservation.jpg');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
+  <div class="form-group">
+    {{ form.user_datetime.label_tag }}
+    {{ form.user_datetime }}
+  </div>
 
-        form {
-            background: rgb(4, 255, 184);
-            padding: 20px;
-            border-radius: 10px;
-        }
+  <div class="form-group">
+    {{ form.user_count.label_tag }}
+    {{ form.user_count }}
+  </div>
 
-        form label,
-        form input,
-        form textarea {
-            display: block;
-            margin-bottom: 10px;
-        }
-    </style>
-</head>
+  <div class="form-group">
+    {{ form.special_requests.label_tag }}
+    {{ form.special_requests }}
+  </div>
 
-<body>
-
-    <form action="{% url 'booking' %}" method="post">
-        {% csrf_token %}
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required><br><br>
-
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required><br><br>
-
-        <label for="phone">Phone:</label>
-        <input type="tel" id="phone" name="phone" required><br><br>
-
-        <label for="date">Date:</label>
-        <input type="date" id="date" name="date" required><br><br>
-
-        <label for="time">Time:</label>
-        <input type="time" id="time" name="time" required><br><br>
-
-        <label for="message">Additional Message:</label><br>
-        <textarea id="message" name="message" rows="4" cols="50"></textarea><br><br>
-
-        <input type="submit" value="Book a Table">
-    </form>
-
-</body>
-
-</html>
+  <button type="submit">Submit Reservation</button>
+</form>
