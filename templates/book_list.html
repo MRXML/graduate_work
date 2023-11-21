@@ -1,0 +1,17 @@
+{% block content %}
+    <div class="container mt-5">
+        <h1>Список бронирований</h1>
+        <div class="list-group mt-4">
+            {% for reservation in reservations %}
+                <div class="list-group-item">
+                    <h5 class="mb-1">{{ reservation.user_name }}</h5>
+                    <p class="mb-1">{{ reservation.user_phone }}</p>
+                    <p class="mb-1">Дата: {{ reservation.user_datetime }}
+                    <p class="mb-1">Дата создания запроса: {{ reservation.reservation_datetime }}
+                    <p class="mb-1">Количество гостей: {{ reservation.user_count }}</p>
+                    <p class="mb-1">Статус: {{ reservation.processing }}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
