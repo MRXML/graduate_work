@@ -10,6 +10,8 @@
                     <p class="mb-1">Дата создания запроса: {{ reservation.reservation_datetime }}
                     <p class="mb-1">Количество гостей: {{ reservation.user_count }}</p>
                     <p class="mb-1">Статус: {{ reservation.processing }}
+                    <p class="mb-1">Статус: {{ reservation.special_requests }}
+                    <a href="{% url 'manager:edit' reservation.id %}" class="btn btn-primary btn-sm float-right">Редактировать</a>
                 </div>
             {% endfor %}
         </div>
