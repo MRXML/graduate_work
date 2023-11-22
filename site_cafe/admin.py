@@ -1,7 +1,6 @@
 from django.contrib import admin
 from .models import Category, Dish, Reservation
 
-
 @admin.register(Category)
 class AdminCategory(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}
@@ -27,3 +26,4 @@ class AdminReservation(admin.ModelAdmin):
 
     def get_form(self, request, obj=None, **kwargs):
         return super(AdminReservation, self).get_form(request, obj, **kwargs)
+

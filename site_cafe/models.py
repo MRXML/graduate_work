@@ -32,3 +32,4 @@ class Reservation(models.Model):
     processing = models.BooleanField(default=True)
     class Meta:
         ordering = ('-reservation_datetime',)
+

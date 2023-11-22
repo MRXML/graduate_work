@@ -94,7 +94,7 @@
                 {% for category in categories %}
                     <div class="col-md-4 mb-4">
                         <div class="card">
-                            <img src="{% static 'assets/img/bg.jpg' %}" class="card-img-top" alt="{{ category.name }}">
+                            <div alt="{{ category.name }}">
                             <div class="card-body">
                                 <h5 class="category-name">{{ category.name }}</h5>
                                 <ul class="menu-list">

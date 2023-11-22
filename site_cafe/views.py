@@ -42,3 +42,5 @@ def menu(request):
     categories = Category.objects.filter(is_visible=True).order_by('position')
     dishes = Dish.objects.filter(is_visible=True).order_by('position')
     return render(request, 'menu.html', {'categories': categories, 'dishes': dishes})
+
+
